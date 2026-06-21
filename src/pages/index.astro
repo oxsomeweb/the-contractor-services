@@ -1,28 +1,25 @@
 ---
-import '../styles/global.css';
 const services = [
   { icon: '🔧', name: 'Plumbing', desc: 'Leaks, clogs, water heaters & full installations' },
-  { icon: '⚡', name: 'Electrical', desc: 'Panel upgrades, wiring, outlets & more' },
-  { icon: '❄️', name: 'HVAC', desc: 'AC repair, furnace install, tune-ups' },
+  { icon: '⚡', name: 'Electrical', desc: 'Panel upgrades, wiring, outlets & permits' },
+  { icon: '❄️', name: 'HVAC', desc: 'AC repair, furnace install & tune-ups' },
   { icon: '🏠', name: 'Roofing', desc: 'Repairs, replacements & storm damage' },
   { icon: '🎨', name: 'Painting', desc: 'Interior & exterior, cabinet refinishing' },
   { icon: '🔨', name: 'Remodeling', desc: 'Kitchen, bath, basement & additions' },
   { icon: '🌿', name: 'Landscaping', desc: 'Lawn care, hardscaping & design' },
   { icon: '🪵', name: 'Flooring', desc: 'Hardwood, tile, LVP & carpet' },
-  { icon: '🏗️', name: 'General Contractor', desc: 'Full project management & coordination' },
+  { icon: '🏗️', name: 'General Contractor', desc: 'Full project management' },
 ];
-
 const stats = [
   { value: '50,000+', label: 'Homeowners Helped' },
   { value: '2,800+', label: 'Verified Contractors' },
   { value: 'All 50', label: 'States Covered' },
   { value: '4.8 ★', label: 'Average Rating' },
 ];
-
 const steps = [
   { n: '1', title: 'Tell Us What You Need', desc: 'Select your service type, describe your project, and share your zip code.' },
   { n: '2', title: 'Get Matched Instantly', desc: 'We connect you with pre-screened local contractors available in your area.' },
-  { n: '3', title: 'Compare & Hire', desc: 'Review profiles, read real reviews, and choose the right pro for the job.' },
+  { n: '3', title: 'Compare & Hire', desc: 'Review profiles, read verified reviews, and choose the right pro for the job.' },
 ];
 ---
 <!DOCTYPE html>
@@ -36,118 +33,151 @@ const steps = [
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"The Contractor Services","url":"https://thecontractorservices.com","potentialAction":{"@type":"SearchAction","target":"https://thecontractorservices.com/#request","query-input":"required name=service_type"}}
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: { center: true, padding: '1rem', screens: { '2xl': '1280px' } },
+        extend: {
+          colors: { brand: '#1B3A5C', accent: '#F97316', light: '#F8F6F1' },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Sora', 'Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
   </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.75rem; padding: 1rem 2rem; font-size: 1rem; font-weight: 600; color: white; background: #F97316; transition: all .2s; box-shadow: 0 4px 14px rgba(249,115,22,0.4); }
+    .btn-primary:hover { background: #ea6c0c; box-shadow: 0 8px 20px rgba(249,115,22,0.45); transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.75rem; padding: 1rem 2rem; font-size: 1rem; font-weight: 600; color: white; border: 2px solid rgba(255,255,255,0.4); transition: all .2s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+    .card { background: white; border-radius: 1rem; border: 1px solid #e5e7eb; padding: 1.25rem; transition: all .2s; }
+    .card:hover { border-color: #F97316; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    input, select, textarea { width: 100%; border-radius: 0.75rem; border: 1px solid #e5e7eb; padding: 0.75rem 1rem; font-size: 0.95rem; outline: none; font-family: inherit; transition: border-color .15s; }
+    input:focus, select:focus, textarea:focus { border-color: #F97316; box-shadow: 0 0 0 3px rgba(249,115,22,0.15); }
+    .step-circle { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: #1B3A5C; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; box-shadow: 0 4px 14px rgba(27,58,92,0.35); margin: 0 auto 1.25rem; }
+  </style>
 </head>
-<body>
+<body style="background:#fff; color:#1f2937;">
 
   <!-- NAV -->
-  <header class="sticky top-0 z-50 bg-brand shadow-sm">
-    <div class="container flex h-16 items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5">
+  <header style="background:#1B3A5C; position:sticky; top:0; z-index:50; box-shadow:0 2px 12px rgba(0,0,0,0.15);">
+    <div class="container" style="display:flex; height:4rem; align-items:center; justify-content:space-between;">
+      <a href="/" style="display:flex; align-items:center; gap:0.625rem; text-decoration:none;">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#F97316"/><path d="M8 14.5l4 4 8-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="font-display text-lg font-bold text-white">The Contractor Services</span>
+        <span style="font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:white;">The Contractor Services</span>
       </a>
-      <a href="#request" class="btn-primary hidden sm:inline-flex py-2 px-5 text-sm">Get Free Quotes</a>
+      <a href="#request" class="btn-primary" style="padding:0.6rem 1.25rem; font-size:0.875rem; display:none;" id="nav-cta">Get Free Quotes</a>
     </div>
   </header>
+  <script>document.getElementById('nav-cta').style.display = window.innerWidth >= 640 ? 'inline-flex' : 'none';</script>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10">
-      <img src="/images/hero.webp" alt="Beautifully renovated home kitchen" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-brand/75"></div>
+  <section style="position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img src="/images/hero.webp" alt="Beautifully renovated kitchen" style="width:100%; height:100%; object-fit:cover;" />
+      <div style="position:absolute; inset:0; background:rgba(27,58,92,0.78);"></div>
     </div>
-    <div class="container py-20 md:py-28 text-center text-white">
-      <div class="inline-block mb-4 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white">
-        ✅ Free for Homeowners — No Commitment Required
+    <div class="container" style="position:relative; z-index:1; padding-top:5rem; padding-bottom:5rem; text-align:center; color:white;">
+      <div style="display:inline-block; margin-bottom:1rem; border-radius:9999px; background:rgba(255,255,255,0.15); padding:0.375rem 1rem; font-size:0.875rem; font-weight:500;">
+        ✅ Free for Homeowners &mdash; No Commitment Required
       </div>
-      <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight">
-        Find a Trusted Contractor<br class="hidden md:block" /> in Your Area
+      <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; max-width:52rem; margin:0 auto;">
+        Find a Trusted Contractor<br/>in Your Area
       </h1>
-      <p class="mt-6 text-lg md:text-xl text-white/85 max-w-2xl mx-auto">
+      <p style="margin-top:1.25rem; font-size:1.125rem; color:rgba(255,255,255,0.85); max-width:40rem; margin-left:auto; margin-right:auto;">
         Tell us what you need. We'll match you with pre-screened local professionals — fast, free, and no obligation.
       </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-3">
-        <a href="#request" class="btn-primary text-base">Find Contractors Near Me</a>
-        <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white border-2 border-white/40 hover:bg-white/10 transition-all">How It Works</a>
+      <div style="margin-top:2.5rem; display:flex; flex-wrap:wrap; justify-content:center; gap:0.75rem;">
+        <a href="#request" class="btn-primary">Find Contractors Near Me</a>
+        <a href="#how-it-works" class="btn-outline">How It Works</a>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAND -->
-  <section class="bg-accent py-8">
+  <!-- STATS -->
+  <section style="background:#F97316; padding:2rem 0;">
     <div class="container">
-      <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+      <dl style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; text-align:center; color:white;">
         {stats.map(s => (
           <div>
-            <dd class="font-display text-3xl font-bold">{s.value}</dd>
-            <dt class="mt-1 text-sm font-medium text-white/80">{s.label}</dt>
+            <dd style="font-family:'Sora',sans-serif; font-size:1.875rem; font-weight:800;">{s.value}</dd>
+            <dt style="margin-top:0.25rem; font-size:0.875rem; opacity:0.85;">{s.label}</dt>
           </div>
         ))}
       </dl>
     </div>
   </section>
+  <style>@media(min-width:768px){dl.stats{grid-template-columns:repeat(4,1fr)!important}}</style>
+  <script>document.querySelector('dl')?.classList.add('stats');</script>
 
   <!-- SERVICES -->
-  <section class="py-16 md:py-20 bg-light" id="services">
+  <section style="padding:4rem 0; background:#F8F6F1;" id="services">
     <div class="container">
-      <div class="text-center mb-12">
-        <h2 class="section-title">What Are You Looking For?</h2>
-        <p class="mt-3 text-gray-500 max-w-xl mx-auto">From emergency repairs to full renovations, we connect homeowners with vetted local pros for every project.</p>
+      <div style="text-align:center; margin-bottom:3rem;">
+        <h2 style="font-family:'Sora',sans-serif; font-size:clamp(1.75rem,3vw,2.5rem); font-weight:800; color:#1B3A5C;">What Are You Looking For?</h2>
+        <p style="margin-top:0.75rem; color:#6b7280; max-width:40rem; margin-left:auto; margin-right:auto;">From emergency repairs to full renovations, we connect homeowners with vetted local pros for every project.</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;">
         {services.map(s => (
-          <a href="#request" class="group flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white p-5 hover:border-accent hover:shadow-md transition-all">
-            <span class="text-3xl">{s.icon}</span>
+          <a href="#request" class="card" style="text-decoration:none; display:flex; flex-direction:column; gap:0.75rem;">
+            <span style="font-size:1.75rem;">{s.icon}</span>
             <div>
-              <h3 class="font-semibold text-brand group-hover:text-accent transition-colors">{s.name}</h3>
-              <p class="text-sm text-gray-500 mt-1">{s.desc}</p>
+              <h3 style="font-weight:600; color:#1B3A5C; font-size:0.95rem;">{s.name}</h3>
+              <p style="font-size:0.825rem; color:#9ca3af; margin-top:0.25rem; line-height:1.4;">{s.desc}</p>
             </div>
           </a>
         ))}
       </div>
     </div>
   </section>
+  <style>@media(min-width:640px){.services-grid{grid-template-columns:repeat(3,1fr)!important}}</style>
 
   <!-- HOW IT WORKS -->
-  <section class="py-16 md:py-20 bg-white" id="how-it-works">
+  <section style="padding:4rem 0; background:white;" id="how-it-works">
     <div class="container">
-      <div class="text-center mb-12">
-        <h2 class="section-title">How It Works</h2>
-        <p class="mt-3 text-gray-500 max-w-xl mx-auto">Getting connected to the right contractor takes less than two minutes.</p>
+      <div style="text-align:center; margin-bottom:3rem;">
+        <h2 style="font-family:'Sora',sans-serif; font-size:clamp(1.75rem,3vw,2.5rem); font-weight:800; color:#1B3A5C;">How It Works</h2>
+        <p style="margin-top:0.75rem; color:#6b7280; max-width:36rem; margin-left:auto; margin-right:auto;">Getting connected to the right contractor takes less than two minutes.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div style="display:grid; gap:2rem; max-width:56rem; margin:0 auto;">
         {steps.map(s => (
-          <div class="relative flex flex-col items-center text-center p-6">
-            <div class="w-14 h-14 rounded-full bg-brand flex items-center justify-center text-white font-display text-xl font-bold mb-5 shadow-lg">{s.n}</div>
-            <h3 class="font-display text-lg font-semibold text-brand mb-2">{s.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+          <div style="text-align:center; padding:1.5rem;">
+            <div class="step-circle">{s.n}</div>
+            <h3 style="font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:#1B3A5C; margin-bottom:0.5rem;">{s.title}</h3>
+            <p style="color:#6b7280; font-size:0.9rem; line-height:1.6;">{s.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
+  <style>@media(min-width:768px){.steps-grid{grid-template-columns:repeat(3,1fr)!important}}</style>
 
-  <!-- TRUST PHOTO BAND -->
-  <section class="grid md:grid-cols-2 overflow-hidden max-h-72">
-    <img src="/images/exterior.webp" alt="Professionally renovated home exterior" class="w-full h-full object-cover" />
-    <img src="/images/bathroom.webp" alt="Beautifully remodeled bathroom" class="w-full h-full object-cover" />
+  <!-- PHOTOS -->
+  <section style="display:grid; max-height:18rem; overflow:hidden;">
+    <div style="display:grid; grid-template-columns:1fr 1fr;">
+      <img src="/images/exterior.webp" alt="Professionally renovated home exterior" style="width:100%; height:18rem; object-fit:cover;" />
+      <img src="/images/bathroom.webp" alt="Beautifully remodeled bathroom" style="width:100%; height:18rem; object-fit:cover;" />
+    </div>
   </section>
 
-  <!-- REQUEST FORM -->
-  <section class="py-16 md:py-24 bg-light" id="request">
-    <div class="container max-w-2xl">
-      <div class="text-center mb-10">
-        <h2 class="section-title">Get Free Quotes From Local Pros</h2>
-        <p class="mt-3 text-gray-500">Tell us what you need and we'll match you with available contractors in your area — completely free.</p>
+  <!-- FORM -->
+  <section style="padding:4rem 0; background:#F8F6F1;" id="request">
+    <div class="container" style="max-width:42rem;">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <h2 style="font-family:'Sora',sans-serif; font-size:clamp(1.75rem,3vw,2.25rem); font-weight:800; color:#1B3A5C;">Get Free Quotes From Local Pros</h2>
+        <p style="margin-top:0.75rem; color:#6b7280;">Tell us what you need and we'll match you with available contractors in your area — completely free.</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10">
-        <form id="request-form" class="space-y-5" novalidate>
+      <div style="background:white; border-radius:1.5rem; box-shadow:0 8px 40px rgba(0,0,0,0.1); padding:2.5rem;">
+        <form id="request-form" style="display:flex; flex-direction:column; gap:1.25rem;">
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1.5">What service do you need? <span class="text-accent">*</span></label>
-            <select name="service" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent">
+            <label style="display:block; font-size:0.875rem; font-weight:600; color:#374151; margin-bottom:0.5rem;">What service do you need? <span style="color:#F97316;">*</span></label>
+            <select name="service" required>
               <option value="">Select a service...</option>
               <option>Plumbing</option>
               <option>Electrical</option>
@@ -164,85 +194,75 @@ const steps = [
               <option>Other</option>
             </select>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-1.5">Your Name <span class="text-accent">*</span></label>
-              <input name="name" type="text" placeholder="Jane Smith" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
+              <label style="display:block; font-size:0.875rem; font-weight:600; color:#374151; margin-bottom:0.5rem;">Your Name <span style="color:#F97316;">*</span></label>
+              <input name="name" type="text" placeholder="Jane Smith" required />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-1.5">ZIP Code <span class="text-accent">*</span></label>
-              <input name="zip" type="text" placeholder="55401" inputmode="numeric" maxlength="5" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
+              <label style="display:block; font-size:0.875rem; font-weight:600; color:#374151; margin-bottom:0.5rem;">ZIP Code <span style="color:#F97316;">*</span></label>
+              <input name="zip" type="text" placeholder="55401" inputmode="numeric" maxlength="5" required />
             </div>
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email Address <span class="text-accent">*</span></label>
-            <input name="email" type="email" placeholder="jane@example.com" required class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
+            <label style="display:block; font-size:0.875rem; font-weight:600; color:#374151; margin-bottom:0.5rem;">Email Address <span style="color:#F97316;">*</span></label>
+            <input name="email" type="email" placeholder="jane@example.com" required />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1.5">Briefly describe your project</label>
-            <textarea name="message" rows="3" placeholder="E.g. I need my bathroom faucet replaced and there's a slow drain..." class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent resize-none"></textarea>
+            <label style="display:block; font-size:0.875rem; font-weight:600; color:#374151; margin-bottom:0.5rem;">Briefly describe your project</label>
+            <textarea name="message" rows="3" placeholder="E.g. I need my bathroom faucet replaced and there's a slow drain..." style="resize:none;"></textarea>
           </div>
-          <div>
-            <button type="submit" class="btn-primary w-full text-base py-4">
-              Find Contractors in My Area →
-            </button>
-          </div>
-          <p class="text-xs text-center text-gray-400">By submitting, you agree to receive contractor quotes via email. We never sell your data.</p>
+          <button type="submit" class="btn-primary" style="width:100%; font-size:1rem; padding:1.1rem 2rem;">
+            Find Contractors in My Area →
+          </button>
+          <p style="font-size:0.75rem; text-align:center; color:#9ca3af;">By submitting, you agree to receive contractor quotes via email. We never sell your data.</p>
         </form>
-        <div id="success-msg" class="hidden text-center py-10">
-          <div class="text-5xl mb-4">✅</div>
-          <h3 class="font-display text-2xl font-bold text-brand mb-2">You're All Set!</h3>
-          <p class="text-gray-500">We're matching you with contractors in your area now. You'll hear back within 24 hours.</p>
+        <div id="success-msg" style="display:none; text-align:center; padding:3rem 1rem;">
+          <div style="font-size:3rem; margin-bottom:1rem;">✅</div>
+          <h3 style="font-family:'Sora',sans-serif; font-size:1.5rem; font-weight:800; color:#1B3A5C; margin-bottom:0.75rem;">You're All Set!</h3>
+          <p style="color:#6b7280;">We're matching you with contractors in your area. You'll hear back within 24 hours.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TRUST BADGES -->
-  <section class="py-12 bg-white border-t border-gray-100">
+  <section style="padding:3rem 0; background:white; border-top:1px solid #f3f4f6;">
     <div class="container">
-      <div class="flex flex-wrap justify-center items-center gap-8 text-center">
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-2xl">🔒</span>
-          <span class="text-xs font-medium text-gray-500">100% Free<br/>No Obligation</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-2xl">✅</span>
-          <span class="text-xs font-medium text-gray-500">Pre-Screened<br/>Contractors</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-2xl">⭐</span>
-          <span class="text-xs font-medium text-gray-500">Verified<br/>Reviews</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-2xl">⚡</span>
-          <span class="text-xs font-medium text-gray-500">Fast<br/>Matching</span>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-2xl">🇺🇸</span>
-          <span class="text-xs font-medium text-gray-500">All 50 States<br/>Covered</span>
-        </div>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2.5rem; text-align:center;">
+        {[
+          { icon: '🔒', t: '100% Free', s: 'No Obligation' },
+          { icon: '✅', t: 'Pre-Screened', s: 'Contractors' },
+          { icon: '⭐', t: 'Verified', s: 'Reviews' },
+          { icon: '⚡', t: 'Fast', s: 'Matching' },
+          { icon: '🇺🇸', t: 'All 50 States', s: 'Covered' },
+        ].map(b => (
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0.25rem;">
+            <span style="font-size:1.75rem;">{b.icon}</span>
+            <span style="font-size:0.75rem; font-weight:600; color:#374151;">{b.t}</span>
+            <span style="font-size:0.75rem; color:#9ca3af;">{b.s}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-brand text-white py-10">
-    <div class="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-      <div class="flex items-center gap-2">
+  <footer style="background:#1B3A5C; color:white; padding:2.5rem 0;">
+    <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+      <div style="display:flex; align-items:center; gap:0.5rem;">
         <svg width="20" height="20" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#F97316"/><path d="M8 14.5l4 4 8-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="font-semibold">The Contractor Services</span>
+        <span style="font-weight:600; font-size:0.9rem;">The Contractor Services</span>
       </div>
-      <p class="text-white/60 text-xs">© {new Date().getFullYear()} TheContractorServices.com. All rights reserved.</p>
-      <nav class="flex gap-4 text-white/60 hover:[&>a]:text-white">
-        <a href="/privacy" class="text-xs transition-colors">Privacy Policy</a>
-        <a href="/terms" class="text-xs transition-colors">Terms of Service</a>
-        <a href="#request" class="text-xs transition-colors">Get Quotes</a>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.75rem;">&copy; {new Date().getFullYear()} TheContractorServices.com. All rights reserved.</p>
+      <nav style="display:flex; gap:1.25rem;">
+        <a href="/privacy" style="color:rgba(255,255,255,0.55); font-size:0.75rem; text-decoration:none; transition:color .15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Privacy Policy</a>
+        <a href="/terms" style="color:rgba(255,255,255,0.55); font-size:0.75rem; text-decoration:none; transition:color .15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Terms of Service</a>
+        <a href="#request" style="color:rgba(255,255,255,0.55); font-size:0.75rem; text-decoration:none; transition:color .15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Get Quotes</a>
       </nav>
     </div>
   </footer>
 
-  <!-- FORM SCRIPT -->
   <script>
     const form = document.getElementById('request-form');
     const successMsg = document.getElementById('success-msg');
@@ -259,9 +279,18 @@ const steps = [
           body: JSON.stringify(data),
         });
       } catch {}
-      form.classList.add('hidden');
-      successMsg.classList.remove('hidden');
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
     });
+    // Make stats grid responsive
+    const dl = document.querySelector('dl');
+    if(dl && window.innerWidth >= 768) dl.style.gridTemplateColumns = 'repeat(4,1fr)';
+    // Make services grid 3-col on desktop
+    const sg = document.querySelector('#services > div > div[style*="grid"]');
+    if(sg && window.innerWidth >= 640) sg.style.gridTemplateColumns = 'repeat(3,1fr)';
+    // Make steps 3-col on desktop
+    const stg = document.querySelector('#how-it-works > div > div[style*="grid"]');
+    if(stg && window.innerWidth >= 768) stg.style.gridTemplateColumns = 'repeat(3,1fr)';
   </script>
 </body>
 </html>
